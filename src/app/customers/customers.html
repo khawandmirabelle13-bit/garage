@@ -1,0 +1,57 @@
+<div class="top-bar">
+  <button (click)="AddCustomer()">+ Add Customer</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>Phone</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let customer of customers">
+      <td>
+        <button class="btn edit" (click)="updateCustomer(customer)">✏️</button>
+      </td>
+
+      <td>
+        <button class="btn delete" (click)="deleteCustomer(customer.id)">🗑️</button>
+      </td>
+
+      <td>
+       <button class="btn view" (click)="viewCustomer(customer.id)">👁️</button>
+      </td>
+
+      <td>{{ customer.first_name }}</td>
+      <td>{{ customer.last_name }}</td>
+      <td>{{ customer.phone }}</td>
+      <td><b>{{ customer.email }}</b></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="overlay" *ngIf="showDialog">
+  <div class="form-card">
+    <span class="close-btn" (click)="closeDialog()">✖</span>
+
+    <h2>{{ isUpdateMode ? 'Update Customer' : 'Add Customer' }}</h2>
+
+    <form (ngSubmit)="saveCustomer()">
+      <input type="text" placeholder="First Name" [(ngModel)]="customerForm.first_name" name="first_name">
+      <input type="text" placeholder="Last Name" [(ngModel)]="customerForm.last_name" name="last_name">
+      <input type="text" placeholder="Phone" [(ngModel)]="customerForm.phone" name="phone">
+      <input type="email" placeholder="Email" [(ngModel)]="customerForm.email" name="email">
+
+      <button type="submit">
+        {{ isUpdateMode ? 'Update' : 'Save' }}
+      </button>
+    </form>
+  </div>
+</div>

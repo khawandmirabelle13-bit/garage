@@ -1,0 +1,38 @@
+<div class="login-page">
+  <div class="login-container">
+
+    <div class="login-left">
+      <h2>Log In</h2>
+      <p>Login to your account</p>
+
+      <form (ngSubmit)="login()">
+        <input
+          type="email"
+          placeholder="Enter Your User Name"
+          [(ngModel)]="email"
+          name="email"
+          required
+        >
+
+        <input
+          type="password"
+          placeholder="Enter Your Password"
+          [(ngModel)]="password"
+          name="password"
+          required
+        >
+
+        <p class="error" *ngIf="errorMessage">
+          {{ errorMessage }}
+        </p>
+
+        <button type="submit">Login</button>
+      </form>
+    </div>
+
+    <div class="login-right">
+      <img src="https://th.bing.com/th/id/OIP.2N53xL-ZcmHB8SeczAVEkAHaEO?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3">
+    </div>
+
+  </div>
+</div>

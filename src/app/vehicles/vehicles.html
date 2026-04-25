@@ -1,0 +1,55 @@
+<div class="top-bar">
+  <button (click)="addVehicle()">+ Add Vehicle</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Update</th>
+      <th>Delete</th>
+      <th>Model</th>
+      <th>Year</th>
+      <th>Engine</th>
+      <th>Gear</th>
+      <th>Plate Number</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let vehicle of vehicles">
+      <td><button class="btn edit" (click)="updateVehicle(vehicle)">✏️</button></td>
+      <td><button class="btn delete" (click)="deleteVehicle(vehicle.id)">🗑️</button></td>
+
+      <td>{{ vehicle.model }}</td>
+      <td>{{ vehicle.year }}</td>
+      <td>{{ vehicle.engine }}</td>
+      <td>{{ vehicle.gear ? 'Automatic' : 'Manual' }}</td>
+      <td>{{ vehicle.plate_number }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="overlay" *ngIf="showDialog">
+  <div class="form-card">
+    <span class="close-btn" (click)="closeDialog()">✖</span>
+
+    <h2>{{ isUpdateMode ? 'Update Vehicle' : 'Add Vehicle' }}</h2>
+
+    <form (ngSubmit)="saveVehicle()">
+      <input type="text" placeholder="Model" [(ngModel)]="vehicleForm.model" name="model">
+      <input type="number" placeholder="Year" [(ngModel)]="vehicleForm.year" name="year">
+      <input type="text" placeholder="Engine" [(ngModel)]="vehicleForm.engine" name="engine">
+      <input type="text" placeholder="Plate Number" [(ngModel)]="vehicleForm.plate_number" name="plate_number">
+      <input type="text" placeholder="Attribute" [(ngModel)]="vehicleForm.attribute" name="attribute">
+
+      <label>
+        <input type="checkbox" [(ngModel)]="vehicleForm.gear" name="gear">
+        Automatic Gear
+      </label>
+
+      <button type="submit">
+        {{ isUpdateMode ? 'Update' : 'Save' }}
+      </button>
+    </form>
+  </div>
+</div>

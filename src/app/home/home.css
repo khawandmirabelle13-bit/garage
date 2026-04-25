@@ -1,0 +1,78 @@
+/* Page background */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+}
+
+/* Layout */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e293b;
+  color: white;
+  padding: 15px 25px;
+  position:relative;
+}
+
+/* Title */
+.title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Links container */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  
+}
+
+/* Links */
+.nav-links a {
+  text-decoration: none;
+  color: #cbd5e1;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Hover */
+.nav-links a:hover {
+  background: #334155;
+  color: white;
+}
+
+/* Active */
+.nav-links a.active {
+  background: #3b82f6;
+  color: white;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 30px;
+  background: #f8fafc;
+}
+
+/* Card style */
+.content h1,
+.content p {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  width: fit-content;
+}
